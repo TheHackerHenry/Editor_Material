@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Theming/StylishDark.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scenes/Editor.gd" type="Script" id=2]
+[ext_resource path="res://Theming/Fira Code Regular Nerd Font Complete.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="New Empty" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editor" type="TextEdit" parent="."]
+margin_left = -3.0
+margin_right = 1020.0
+margin_bottom = 600.0
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/member_variable_color = Color( 0.2, 0.709804, 0.898039, 1 )
+custom_colors/function_color = Color( 0.2, 0.709804, 0.898039, 1 )
+custom_colors/symbol_color = Color( 0.2, 0.709804, 0.898039, 1 )
+custom_colors/selection_color = Color( 0, 0.6, 0.8, 0.466667 )
+custom_colors/breakpoint_color = Color( 1, 0.266667, 0.266667, 1 )
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/line_number_color = Color( 0.2, 0.709804, 0.898039, 1 )
+custom_colors/number_color = Color( 1, 0.733333, 0.2, 1 )
+custom_colors/brace_mismatch_color = Color( 1, 0.266667, 0.266667, 1 )
+custom_colors/current_line_color = Color( 0.294118, 0.317647, 0.364706, 1 )
+custom_colors/word_highlighted_color = Color( 0, 0.6, 0.8, 1 )
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+draw_tabs = true
+breakpoint_gutter = true
+highlight_all_occurrences = true
+smooth_scrolling = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="File" type="FileDialog" parent="."]
+margin_right = 450.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "File"
+resizable = true
+dialog_hide_on_ok = true
+mode_overrides_title = false
+access = 2
+current_dir = "/"
+current_path = "/"
+
+[node name="BottomBar" type="ColorRect" parent="."]
+margin_top = 580.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.168627, 0.733333, 0.678431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Label" parent="."]
+margin_top = 580.0
+margin_right = 1023.0
+margin_bottom = 600.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="file_selected" from="File" to="Editor" method="OnFileSelected"]
